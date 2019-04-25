@@ -47,13 +47,11 @@ void loop()
 {
   data++;
 
+  digitalWrite(LED, !digitalRead(LED));
   espNow.send(master_mac, (u8 *)&data, sizeof(data), [&]() {
     // _go_sleep(_defaultDeepSleep_m);
   },
               1000);
-
-  digitalWrite(LED, !digitalRead(LED));
-  delay(200);
   digitalWrite(LED, !digitalRead(LED));
 
   Serial.print("data: ");
